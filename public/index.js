@@ -1,4 +1,6 @@
 let transactions = [];
+let noServiceTransaction = [];
+let objectStorage;
 let myChart;
 
 fetch("/api/transaction")
@@ -12,7 +14,10 @@ fetch("/api/transaction")
     populateTotal();
     populateTable();
     populateChart();
-  });
+  })
+  .catch(err => {
+    transactions = objectStore.getAll()
+  })
 
 function populateTotal() {
   // reduce transaction amounts to a single total value

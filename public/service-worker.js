@@ -43,7 +43,8 @@ self.addEventListener('activate', function (event) {
 
 // fetch
 self.addEventListener('fetch', function (event) {
-	if (event.request.url.includes('/api/')) {
+	if (event.request.url.includes('/api/transaction')) {
+		console.log(event);
 		event.respondWith(
 			caches
 				.open(DATA_CACHE_NAME)
