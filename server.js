@@ -1,3 +1,4 @@
+const compression = require('compression');
 const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
@@ -14,10 +15,12 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // include mongoose here when set up
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/3000', {
-	useNewUrlParser: true,
-	useFindAndModify: false,
-});
+mongoose
+	.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/budget', {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	})
+	.catch((error) => console.log(error));
 
 // Include route
 app.use(require(route));
