@@ -16,7 +16,7 @@ fetch("/api/transaction")
     populateChart();
   })
   .catch(err => {
-    transactions = objectStore.getAll()
+    transactions = objectStorage.getAll()
   })
 
 function populateTotal() {
